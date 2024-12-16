@@ -1,0 +1,6 @@
+Instructor Name: Phillip Madden (Phil)
+Email: symbolicon@live.com
+
+Course: Advanced Object-Oriented Programming with Visual C++
+Course Repository: https://github.com/NewriseLearning/CPP-301
+
