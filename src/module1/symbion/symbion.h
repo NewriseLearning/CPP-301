@@ -17,8 +17,13 @@ namespace symbion {
 
 	class CConsoleLogger {
 	private:
-		const char*m_source;
+		char *m_source;
 	public:
+		CConsoleLogger();
+		CConsoleLogger(CConsoleLogger& obj);
+	//	explicit CConsoleLogger(const char* source);
+		CConsoleLogger(const char* source);
+		~CConsoleLogger();	// destructor
 		const char* GetSource();
 		void PutSource(const char* source);
 		void Write(const char* message, LogType logType);
