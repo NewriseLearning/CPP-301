@@ -8,6 +8,12 @@
 
 #include <cstdint>	// C++ header file for stdint.h
 
+#define SAFE_DELETE(ptr) delete ptr; ptr = nullptr;
+
+#ifndef abstract 
+#define abstract = 0	// pure virtual function
+#endif
+
 namespace symbion {
 	enum struct LogType : uint8_t {
 		Information,
@@ -15,17 +21,30 @@ namespace symbion {
 		Error
 	};
 
-	class CConsoleLogger {
+	class CBaseLogger {
 	private:
-		char *m_source;
+		char* m_source;
+	public:
+		CBaseLogger();
+		CBaseLogger(const CBaseLogger& obj);
+		CBaseLogger(const char* source);
+		virtual ~CBaseLogger();
+		virtual const char* GetSource() const;
+		virtual void PutSource(const char* source);
+		virtual void Write(const char* message, LogType logType) const = 0;
+//		virtual void Write(const char* message, LogType logType) const abstract;
+		void Message(const char* message) const;
+		void Warning(const char* message) const;
+		void Failure(const char* message) const;
+		static const char *GetLogTypeText(LogType logType);
+	public:
+		__declspec(property(get = GetSource, put = PutSource)) const char* Source;
+	};
+
+	class CConsoleLogger : public CBaseLogger {
 	public:
 		CConsoleLogger();
-		CConsoleLogger(CConsoleLogger& obj);
-	//	explicit CConsoleLogger(const char* source);
 		CConsoleLogger(const char* source);
-		~CConsoleLogger();	// destructor
-		const char* GetSource();
-		void PutSource(const char* source);
-		void Write(const char* message, LogType logType);
+		void Write(const char* message, LogType logType) const override;
 	};
 }

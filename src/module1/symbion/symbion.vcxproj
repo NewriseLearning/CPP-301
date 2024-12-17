@@ -142,6 +142,7 @@
     <ClInclude Include="symbion.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="baselogger.cpp" />
     <ClCompile Include="consolelogger.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
