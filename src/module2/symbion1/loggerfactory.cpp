@@ -1,5 +1,4 @@
-#include "symbion.h"
-#include <windows.h>
+#include "pch.h"
 
 namespace symbion {
 	CBaseLogger *CLoggerFactory::m_pInstance;

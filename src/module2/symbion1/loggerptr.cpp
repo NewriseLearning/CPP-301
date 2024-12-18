@@ -1,5 +1,4 @@
-#include "symbion.h"
-#include <exception>
+#include "pch.h"
 
 namespace symbion {
 	CLoggerPtr::CLoggerPtr() : m_ptr(nullptr) {

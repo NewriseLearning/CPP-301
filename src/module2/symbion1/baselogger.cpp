@@ -1,14 +1,6 @@
 //	baselogger.cppp
 
-#include "symbion.h"
-
-//extern "C" {
-//#include <stdio.h>
-//}
-
-#include <cstdio>	// c++ header for stdio.h
-#include <cstring>	// C++ header for string.h (strlen)
-#include <exception>
+#include "pch.h"
 
 namespace symbion {
 

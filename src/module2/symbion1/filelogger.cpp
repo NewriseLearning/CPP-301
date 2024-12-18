@@ -1,7 +1,4 @@
-#include "symbion.h"
-#include <fstream>
-#include <ctime>	// C++ version of time.h
-#include <cstring>
+#include "pch.h"
 
 namespace symbion {
 	CFileLogger::CFileLogger() : m_filename(nullptr), CBaseLogger("CFileLogger") {

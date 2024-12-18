@@ -1,9 +1,8 @@
 //	debuglogger.cpp
 
-#include "symbion.h"
 // #define _CRT_SECURE_NO_WARNINGS
-#include <windows.h>
-#include <cstdio>
+
+#include "pch.h"
 
 namespace symbion {
 	CDebugLogger::CDebugLogger() : CBaseLogger("CDebugLogger") { }
