@@ -1,6 +1,8 @@
 //	main.cpp
 
 #include "symbion.h"
+#include <memory>
+
 
 // using symbion::LogType;
 // using symbion::CConsoleLogger;
@@ -159,11 +161,60 @@ void useLog(const CBaseLogger *log) {
 	log->Message("Goodbye!");
 }
 
-int main() {
+int main8() {
 	puts(CBaseLogger::GetLogTypeText(LogType::Information));
 	puts(CBaseLogger::GetLogTypeText(LogType::Warning));
 	puts(CBaseLogger::GetLogTypeText(LogType::Error));
 	CConsoleLogger log1;
 	useLog(log1);
 	useLog(&log1);
+	CDebugLogger log2;
+	useLog(log2);
+	useLog(&log2);
+	CFileLogger log3("symbion");
+	useLog(log3);
+	useLog(&log3);
+	return 0;
+}
+
+// Why destructors should be virtual in polymorphic types?
+// virtual functions are called based on object
+// non-virtual functions are called based on type
+// virtual destructor ensures we are always calling the correct destructor
+
+class Abc { 
+public:
+	virtual void foo() { }
+};
+
+int main9() {
+//	printf("size:%d\n", sizeof(CBaseLogger));
+	printf("size:%d\n", sizeof(Abc));	// 4 bytes (pointer to v-tbl)
+	CBaseLogger* pLog = new CFileLogger("symbion");
+	pLog->Message("Hello!");	// Message will call CFileLogger::Write
+	pLog->Message("Goodbye!");	// Message will call CFileLogger::Write
+	delete pLog;	// ~CFileLogger() will call ~CBaseLogger()
+	return 0;
+}
+
+int main10() {
+//	useLog(CConsoleLogger());
+//	useLog(CDebugLogger());
+	CBaseLogger* pLog = CLoggerFactory::GetInstance();
+	pLog->Source = "symbion";
+	pLog->Message("Hello!");
+	pLog->Message("Goodbye!");
+	CLoggerFactory::GetInstance()->Message("Sayonara!");
+	delete pLog;
+	return 0;
+}
+
+// CLoggerPtr log(CLoggerFactory::GetInstance());
+std::shared_ptr<CBaseLogger> log(CLoggerFactory::GetInstance());
+
+int main() {
+	std::shared_ptr<CBaseLogger> log2(log);
+	log->Message("Hello!");
+	log->Message("Goodbye!");
+	log2->Message("Sayonara!");
 }

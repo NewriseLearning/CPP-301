@@ -144,6 +144,10 @@
   <ItemGroup>
     <ClCompile Include="baselogger.cpp" />
     <ClCompile Include="consolelogger.cpp" />
+    <ClCompile Include="debuglogger.cpp" />
+    <ClCompile Include="filelogger.cpp" />
+    <ClCompile Include="loggerfactory.cpp" />
+    <ClCompile Include="loggerptr.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

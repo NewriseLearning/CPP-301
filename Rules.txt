@@ -8,6 +8,9 @@
 - Destructors should always be virtual in classes with virtual functions (polymorphic types)
 - All auto-generated constructor/destructor are extended from base constructor/destructor
 - Polymorphism only works using pointer/reference, does not work by value.
+- Virtual functions are always called correctly everywhere except constructors.
+- Constructors cannot call overriding functions in derived classes, only its own functions and base class functions.
+
 
 
 

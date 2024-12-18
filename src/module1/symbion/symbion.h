@@ -47,4 +47,51 @@ namespace symbion {
 		CConsoleLogger(const char* source);
 		void Write(const char* message, LogType logType) const override;
 	};
+
+	class CDebugLogger : public CBaseLogger {
+	public:
+		CDebugLogger();
+		CDebugLogger(const char* source);
+		void Write(const char* message, LogType logType) const override;
+	};
+
+	class CFileLogger : public CBaseLogger {
+	private:
+		char* m_filename;
+	public:
+		CFileLogger();
+		CFileLogger(const char* source);
+		CFileLogger(const CFileLogger& obj);
+		const char* GetFilename() const;
+		void PutSource(const char* source) override;
+		void Write(const char* message, LogType logType) const override;
+		~CFileLogger();
+	private:
+		void UpdateFilename();
+	};
+
+	class CLoggerPtr {
+	private:
+		CBaseLogger* m_ptr;
+	public:
+		CLoggerPtr();
+		CLoggerPtr(CBaseLogger* ptr);
+		CLoggerPtr(const CLoggerPtr& obj);
+		~CLoggerPtr();
+		void PutPtr(CBaseLogger* ptr);
+		CBaseLogger* GetPtr() const;
+		operator CBaseLogger* () const;
+		CLoggerPtr& operator =(CBaseLogger* ptr);
+		CBaseLogger* operator ->() const;
+	};
+
+	class CLoggerFactory {
+	private:
+		static CBaseLogger* m_pInstance;
+	public:
+		static CBaseLogger* CreateInstance();
+		static CBaseLogger* GetInstance();
+	};
+
+
 }
