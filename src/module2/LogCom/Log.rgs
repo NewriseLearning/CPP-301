@@ -1,0 +1,26 @@
+HKCR
+{
+	LogCom.Log.1 = s 'Log class'
+	{
+		CLSID = s '{f5c44c50-d02a-432a-a8b9-3b237cfbda70}'
+	}
+	LogCom.Log = s 'Log class'
+	{		
+		CurVer = s 'LogCom.Log.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {f5c44c50-d02a-432a-a8b9-3b237cfbda70} = s 'Log class'
+		{
+			ProgID = s 'LogCom.Log.1'
+			VersionIndependentProgID = s 'LogCom.Log'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{bc75ec4e-9238-4803-bcda-d8800c7deaf3}'
+			Version = s '1.0'
+		}
+	}
+}
