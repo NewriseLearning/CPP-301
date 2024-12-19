@@ -96,6 +96,15 @@ EXTERN_C const IID IID_ILog;
     ILog : public IDispatch
     {
     public:
+        virtual /* [id][propget] */ HRESULT STDMETHODCALLTYPE get_Source( 
+            /* [retval][out] */ BSTR *pVal) = 0;
+        
+        virtual /* [id][propput] */ HRESULT STDMETHODCALLTYPE put_Source( 
+            /* [in] */ BSTR newVal) = 0;
+        
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE Write( 
+            /* [in] */ BSTR message) = 0;
+        
     };
     
     
@@ -161,6 +170,21 @@ EXTERN_C const IID IID_ILog;
             /* [annotation][out] */ 
             _Out_opt_  UINT *puArgErr);
         
+        DECLSPEC_XFGVIRT(ILog, get_Source)
+        /* [id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_Source )( 
+            ILog * This,
+            /* [retval][out] */ BSTR *pVal);
+        
+        DECLSPEC_XFGVIRT(ILog, put_Source)
+        /* [id][propput] */ HRESULT ( STDMETHODCALLTYPE *put_Source )( 
+            ILog * This,
+            /* [in] */ BSTR newVal);
+        
+        DECLSPEC_XFGVIRT(ILog, Write)
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *Write )( 
+            ILog * This,
+            /* [in] */ BSTR message);
+        
         END_INTERFACE
     } ILogVtbl;
 
@@ -197,6 +221,15 @@ EXTERN_C const IID IID_ILog;
     ( (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr) ) 
 
 
+#define ILog_get_Source(This,pVal)	\
+    ( (This)->lpVtbl -> get_Source(This,pVal) ) 
+
+#define ILog_put_Source(This,newVal)	\
+    ( (This)->lpVtbl -> put_Source(This,newVal) ) 
+
+#define ILog_Write(This,message)	\
+    ( (This)->lpVtbl -> Write(This,message) ) 
+
 #endif /* COBJMACROS */
 
 
@@ -228,6 +261,16 @@ Log;
 #endif /* __LogComLib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
+
+unsigned long             __RPC_USER  BSTR_UserSize(     unsigned long *, unsigned long            , BSTR * ); 
+unsigned char * __RPC_USER  BSTR_UserMarshal(  unsigned long *, unsigned char *, BSTR * ); 
+unsigned char * __RPC_USER  BSTR_UserUnmarshal(unsigned long *, unsigned char *, BSTR * ); 
+void                      __RPC_USER  BSTR_UserFree(     unsigned long *, BSTR * ); 
+
+unsigned long             __RPC_USER  BSTR_UserSize64(     unsigned long *, unsigned long            , BSTR * ); 
+unsigned char * __RPC_USER  BSTR_UserMarshal64(  unsigned long *, unsigned char *, BSTR * ); 
+unsigned char * __RPC_USER  BSTR_UserUnmarshal64(unsigned long *, unsigned char *, BSTR * ); 
+void                      __RPC_USER  BSTR_UserFree64(     unsigned long *, BSTR * ); 
 
 /* end of Additional Prototypes */
 

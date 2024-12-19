@@ -14,3 +14,27 @@ extern "C" BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpRes
 	hInstance;
 	return _AtlModule.DllMain(dwReason, lpReserved);
 }
+
+
+STDMETHODIMP CLogComModule::get_Source(BSTR* pVal)
+{
+	// TODO: Add your implementation code here
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CLogComModule::put_Source(BSTR newVal)
+{
+	// TODO: Add your implementation code here
+
+	return S_OK;
+}
+
+
+STDMETHODIMP CLogComModule::Write(BSTR message)
+{
+	// TODO: Add your implementation code here
+
+	return S_OK;
+}

@@ -16,6 +16,9 @@ import "ocidl.idl";
 ]
 interface ILog : IDispatch
 {
+	[propget, id(1)] HRESULT Source([out, retval] BSTR* pVal);
+	[propput, id(1)] HRESULT Source([in] BSTR newVal);
+	[id(2)] HRESULT Write([in] BSTR message);
 };
 [
 	uuid(bc75ec4e-9238-4803-bcda-d8800c7deaf3),

@@ -23,10 +23,11 @@ class ATL_NO_VTABLE CLog :
 	public CComCoClass<CLog, &CLSID_Log>,
 	public IDispatchImpl<ILog, &IID_ILog, &LIBID_LogComLib, /*wMajor =*/ 1, /*wMinor =*/ 0>
 {
+private:
+	BSTR m_source;
 public:
-	CLog()
-	{
-	}
+	CLog();
+	~CLog();
 
 DECLARE_REGISTRY_RESOURCEID(106)
 
@@ -53,6 +54,9 @@ public:
 
 
 
+	STDMETHOD(get_Source)(BSTR* pVal);
+	STDMETHOD(put_Source)(BSTR newVal);
+	STDMETHOD(Write)(BSTR message);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(Log), CLog)
