@@ -1,0 +1,16 @@
+- Only constant functions are callable in constant objects
+- Constant functions cannot change object variables unless they are mutable
+- Default constructor auto-generated for classes that has no constructors
+- Copy constructor always auto-generated for classes that does not have copy constructor
+- Classes using dynamic resources/memory must implement custom copy constructors
+- Use destructor to release dynamic resources/memory per object
+- Destructor is auto-generated generated for classes without destructor function
+- Destructors should always be virtual in classes with virtual functions (polymorphic types)
+- All auto-generated constructor/destructor are extended from base constructor/destructor
+- Polymorphism only works using pointer/reference, does not work by value.
+- Virtual functions are always called correctly everywhere except constructors.
+- Constructors cannot call overriding functions in derived classes, only its own functions and base class functions.
+
+
+
+
