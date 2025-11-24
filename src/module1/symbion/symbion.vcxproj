@@ -142,7 +142,9 @@
     <ClInclude Include="symbion.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="baselogger.cpp" />
     <ClCompile Include="consolelogger.cpp" />
+    <ClCompile Include="debuglogger.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

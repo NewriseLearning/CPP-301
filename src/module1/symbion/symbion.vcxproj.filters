@@ -20,10 +20,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="consolelogger.cpp">
+    <ClCompile Include="baselogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="consolelogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuglogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
