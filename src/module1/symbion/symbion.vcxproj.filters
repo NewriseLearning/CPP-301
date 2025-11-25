@@ -32,5 +32,11 @@
     <ClCompile Include="debuglogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="filelogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loggerfactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

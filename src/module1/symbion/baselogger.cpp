@@ -5,7 +5,7 @@
 
 namespace symbion {
 	CBaseLogger::CBaseLogger() : m_source(nullptr) {
-		PutSource("CBaseLogger");
+		PutSource("CBaseLogger");	// CBaseLogger::PutSource("CBaseLogger");
 	}
 
 	CBaseLogger::CBaseLogger(const char* source) : m_source(nullptr) {

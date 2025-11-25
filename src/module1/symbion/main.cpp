@@ -102,9 +102,19 @@ void UseLogger(CBaseLogger* pLog) {
 	SAFE_DELETE(pLog);
 }
 
-int main() {
+int main7() {
 	UseLogger(new CConsoleLogger());
 	UseLogger(new CDebugLogger());
+	UseLogger(new CFileLogger());
+	return 0;
+}
 
+int main() {
+	CLoggerFactory factory;
+	CBaseLogger *pLog = factory.CreateInstance();
+	pLog->Message("Hello!");
+	pLog->Message("Goodbye!");
+	SAFE_DELETE(pLog);
+	return 0;
 }
 

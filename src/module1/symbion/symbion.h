@@ -30,7 +30,7 @@ namespace symbion {
 		void Message(const char* message) const { Write(message, LogType::Information); }
 		void Warning(const char* message) const { Write(message, LogType::Warning); }
 		void Failure(const char* message) const { Write(message, LogType::Error); }
-		~CBaseLogger();
+		virtual ~CBaseLogger();
 		static const char* GetLogTypeText(LogType logType);
 	};
 
@@ -47,5 +47,25 @@ namespace symbion {
 		CDebugLogger();
 		CDebugLogger(const char* source);
 		void Write(const char* message, LogType logType) const override;
+	};
+
+	class CFileLogger : public CBaseLogger {
+	private:
+		char* m_filename;
+
+	public:
+		CFileLogger();
+		CFileLogger(const char* source);
+		CFileLogger(const CFileLogger& obj);
+		void PutSource(const char* source);
+		void Write(const char* message, LogType logType) const override;
+		~CFileLogger();
+	private:
+		void UpdateFilename();
+	};
+
+	class CLoggerFactory {
+	public:
+		CBaseLogger* CreateInstance();
 	};
 }
