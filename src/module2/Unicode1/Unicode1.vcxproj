@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e66d810e-3532-4946-b076-d2c109059268}</ProjectGuid>
-    <RootNamespace>symbion</RootNamespace>
+    <ProjectGuid>{364df65b-63c9-4faf-9e61-acd43a46f3f5}</ProjectGuid>
+    <RootNamespace>Unicode1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,15 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="symbion.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="baselogger.cpp" />
-    <ClCompile Include="consolelogger.cpp" />
-    <ClCompile Include="debuglogger.cpp" />
-    <ClCompile Include="filelogger.cpp" />
-    <ClCompile Include="loggerfactory.cpp" />
-    <ClCompile Include="loggerptr.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,6 @@
 #include "symbion.h"
 #include <cstdio>
+#include <memory>
 
 
 
@@ -109,12 +110,30 @@ int main7() {
 	return 0;
 }
 
-int main() {
-	CLoggerFactory factory;
-	CBaseLogger *pLog = factory.CreateInstance();
+int main8() {
+//	CLoggerFactory factory;
+//	CBaseLogger *pLog = factory.CreateInstance();
+	CBaseLogger* pLog = CLoggerFactory::GetInstance();
 	pLog->Message("Hello!");
 	pLog->Message("Goodbye!");
-	SAFE_DELETE(pLog);
+//	SAFE_DELETE(pLog);
 	return 0;
 }
+
+int main9() {
+	std::unique_ptr<CBaseLogger> log(CLoggerFactory::CreateInstance());
+	log->Message("Hello world!");
+	log->Message("Goodbye world!");
+	return 0;
+}
+
+int main() {
+	std::shared_ptr<CBaseLogger> log1(CLoggerFactory::CreateInstance());
+	std::shared_ptr<CBaseLogger> log2(log1);
+	log1->Message("Hello world!");
+	log2->Message("Goodbye world!");
+	return 0;
+}
+
+
 

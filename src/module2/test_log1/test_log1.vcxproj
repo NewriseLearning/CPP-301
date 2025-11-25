@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e66d810e-3532-4946-b076-d2c109059268}</ProjectGuid>
-    <RootNamespace>symbion</RootNamespace>
+    <ProjectGuid>{ada81ffe-163e-419b-96f4-606891f09191}</ProjectGuid>
+    <RootNamespace>testlog1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -92,6 +92,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\CPP-301\src\module2\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>symbion1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,15 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="symbion.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="baselogger.cpp" />
-    <ClCompile Include="consolelogger.cpp" />
-    <ClCompile Include="debuglogger.cpp" />
-    <ClCompile Include="filelogger.cpp" />
-    <ClCompile Include="loggerfactory.cpp" />
-    <ClCompile Include="loggerptr.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

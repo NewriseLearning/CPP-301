@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef _WINDLL
+#define SYMBION_API __declspec(dllexport)
+#else
+#define SYMBION_API __declspec(dllimport)
+#endif
+
 #include <cstdint>
 
 #ifndef SAFE_DELETE
@@ -15,7 +21,7 @@ namespace symbion {
 
 
 	// Base class
-	class CBaseLogger {
+	class SYMBION_API CBaseLogger {
 	protected:
 		char* m_source;
 	public:
@@ -35,21 +41,21 @@ namespace symbion {
 	};
 
 	// Derived class
-	class CConsoleLogger : public CBaseLogger {
+	class SYMBION_API CConsoleLogger : public CBaseLogger {
 	public:
 		CConsoleLogger();
 		CConsoleLogger(const char* source);
 		void Write(const char* message, LogType logType) const override;
 	};
 
-	class CDebugLogger : public CBaseLogger {
+	class SYMBION_API CDebugLogger : public CBaseLogger {
 	public:
 		CDebugLogger();
 		CDebugLogger(const char* source);
 		void Write(const char* message, LogType logType) const override;
 	};
 
-	class CFileLogger : public CBaseLogger {
+	class SYMBION_API CFileLogger : public CBaseLogger {
 	private:
 		char* m_filename;
 
@@ -64,7 +70,7 @@ namespace symbion {
 		void UpdateFilename();
 	};
 
-	class CLoggerPtr {
+	class SYMBION_API CLoggerPtr {
 	private:
 		CBaseLogger* m_ptr;
 
@@ -80,7 +86,7 @@ namespace symbion {
 		CBaseLogger * operator ->() const;
 	};
 
-	class CLoggerFactory {
+	class SYMBION_API CLoggerFactory {
 	private:
 		// static std::unique_ptr<CBaseLogger> m_pInstance;
 		static CLoggerPtr m_pInstance;
