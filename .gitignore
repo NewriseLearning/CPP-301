@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+boost_1_89_0/
+boost_1_89_0.zip
+
+
 # User-specific files
 *.rsuser
 *.suo

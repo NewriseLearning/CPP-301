@@ -1,0 +1,39 @@
+// LogCom.idl : IDL source for LogCom
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (LogCom.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(dd8754d9-21b5-4f97-8b76-238d3e7eb98b),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ILog : IDispatch
+{
+	[propget, id(1)] HRESULT Source([out, retval] BSTR* pVal);
+	[propput, id(1)] HRESULT Source([in] BSTR newVal);
+	[id(2)] HRESULT Write([in] BSTR message);
+};
+[
+	uuid(6bc23693-d1d1-4d56-b16a-ef03cd3d841d),
+	version(1.0),
+]
+library LogComLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(2bd2fb8d-9e93-4b5d-8b40-e1552003393d)
+	]
+	coclass Log
+	{
+		[default] interface ILog;
+	};
+};
+
+import "shobjidl.idl";
