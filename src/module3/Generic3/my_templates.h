@@ -64,7 +64,7 @@ private:
 	T m_value;
 	bool m_hasValue;
 public:
-	nullable() : m_hasValue(false) { }
+	nullable() : m_value(), m_hasValue(false) { }
 	nullable(void* ptr) : nullable() { if (ptr) throw std::exception("not null"); }
 	nullable(T value) : m_value(value), m_hasValue(true) { }
 	bool hasValue() const { return m_hasValue; }
